@@ -1,17 +1,17 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-console.log(`Environment variable set to ${process.env.NODE_ENV}`);
 import statRoutes from './routes/StatRoutes';
 import statusRoutes from './routes/StatusRoutes';
 import steamRoutes from './routes/SteamRoutes';
 
 import Sequelize from 'sequelize';
+import config from './config';
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const port = process.env.PORT || 3009;
+const port = process.env.PORT || config.node_port || 3009;
 
 app.use('/api/stats', statRoutes);
 app.use('/api/status', statusRoutes);

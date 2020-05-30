@@ -11,12 +11,11 @@ class StatusController {
       host
     })
       .then((state) => {
-        console.log(state);
         util.setSuccess(200, 'Stats retrieved', state);
         return util.send(res);
       })
       .catch((error) => {
-        console.log('Server is offline');
+        console.log('Game Server is offline');
         util.setError(400, error);
         return util.send(res);
       });
